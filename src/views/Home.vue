@@ -16,18 +16,18 @@
 	})
 	export default class Home extends Vue {
 		items = [ 
-			{ display: "Namesue 1", value: "Frank 1" },
-			{ display: "Namesue 2", value: "Frank 2" },
-			{ display: "Namesue 3", value: "Frank 3" },
-			{ display: "Namesue 4", value: "Frank 4" },
-			{ display: "Namesue 5", value: "Frank 5" },
-			{ display: "Namesue 6", value: "Frank 6" },
-			{ display: "Namesue 7", value: "Frank 7" },
-			{ display: "Namesue 8", value: "Frank 8" },
-			{ display: "Namesue 9", value: "Frank 9" },
-			{ display: "Namesue 10", value: "Frank 10" },
-			{ display: "Namesue 11", value: "Frank 11" },
-			{ display: "Namesue 12", value: "Frank 12" }, 
+			{ display: "1", value: "1" },
+			{ display: "2", value: "2" },
+			{ display: "3", value: "3" },
+			{ display: "4", value: "4" },
+			{ display: "5", value: "5" },
+			{ display: "6", value: "6" },
+			{ display: "7", value: "7" },
+			{ display: "8", value: "8" },
+			{ display: "9", value: "9" },
+			{ display: "10", value: "10" },
+			{ display: "11", value: "11" },
+			{ display: "12", value: "12" }, 
 		]
 
 		wew(a:any) {

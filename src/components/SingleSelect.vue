@@ -3,6 +3,11 @@
 		<input :list="name" :name="name" @focus="show_list = true" @blur="hide" v-model="selected_value" autocomplete="false" type="search">
 		<div class="autocomplete-items" v-show="show_list" @mousedown="onMousedown">
 			<div v-for="(v, i) in copied_list" :key="i" @click="setValue(v)"> {{ v[display] }} </div>
+			<div v-show="show_not_found" >
+				<slot name="error">
+					<p> Not Found </p>
+				</slot>
+			</div>
 		</div>
 	</div>
 </template>
@@ -20,11 +25,20 @@
 		show_list: boolean = false;
 		copied_list = []
 		mousedown = false;
+		show_not_found = false;
 
 		@Watch('selected_value')
 		checkFilter(): void {
 			if(this.item != "undefined") {
 				this.copied_list = this.item.filter(this.check)
+
+				console.log(this.copied_list)
+
+				if(this.copied_list.length == 0) {
+					this.show_not_found = true;
+				} else {
+					this.show_not_found = false;
+				}
 			}
 		}
 		
@@ -46,6 +60,7 @@
 			this.show_list = false;
 			this.selected_value = val.display
 			this.mousedown = false;
+			this.show_not_found = false;
 			this.$emit('value', val)
 		}
 
@@ -61,23 +76,6 @@
 		position: relative;
 		display: inline-block;
 
-	/*	&:before{
-	        position: absolute;
-	        right: 5px;
-	        border-color: rgba(60, 60, 60, .5);
-		    border-style: solid;
-		    border-width: 3px 3px 0 0;
-		    content: '';
-		    display: inline-block;
-		    height: 10px;
-		    width: 10px;
-		    vertical-align: text-top;
-		    transform: rotate(133deg);
-		    transition: all 150ms cubic-bezier(1.000, -0.115, 0.975, 0.855);
-		    transition-timing-function: cubic-bezier(1.000, -0.115, 0.975, 0.855);
-		    box-sizing: inherit;
-	    }
-*/
 	  	&-items {
 	  		max-height: 400px;
 	  		overflow-y: scroll;
@@ -121,7 +119,6 @@
 				}
 
 				&:hover {
-					/*when hovering an item:*/
 					background-color: #e9e9e9; 
 				}
 			}
