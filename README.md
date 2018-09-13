@@ -7,18 +7,22 @@ npm i @try-parser/vue-editable-select
 
 ### Usage
 ```
+	import Vue from 'vue'
+	import Components from '@try-parser/vue-editable-select'
+
+	Vue.use(Components)
+```
+
+#### Template
+
+```
     <vue-single-slect name="browser" :item="items" display="display" @value="returnValue" />
+```
 
+#### Script
 
-    import { Component, Vue } from 'vue-property-decorator'
-	import SingleSelect from '@/components/SingleSelect.vue' 
-
-	@Component({
-	  components: {
-	    "vue-single-slect": SingleSelect
-	  }
-	})
-	export default class Home extends Vue {
+```
+	export default {
 		items = [ 
 			{ display: "Place 1", value: "Bar" },
 			{ display: "Fool 2", value: "Foo" },
